@@ -1,0 +1,9 @@
+
+<%= simple_form_for @movie do |f| %>
+	<%= f.file_field :mov_img %>
+	<%= f.input :title, label:"Movie Title" %>
+	<%= f.input :stars, label:"Stars" %>
+	<%= f.input :director, label:"Director" %>
+	<%= f.input :release_year, label:"Released Year" %> 
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>

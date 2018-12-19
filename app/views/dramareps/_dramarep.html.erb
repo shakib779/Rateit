@@ -1,0 +1,21 @@
+<div class="review">
+	<p class="review-comment"> <%= dramarep.comment %></p>
+	<h4> commented by <% @us.each do |us| %>
+		<% if us.id == dramarep.user_id %>
+			<%= us.user_name %>
+		<% end %>
+	<% end %>
+	</h4>
+		<% if user_signed_in? %>
+			<% if dramarep.user_id == current_user.id  %>
+				<div class="links btn-group">
+					<%= link_to "Edit", edit_drama_dramarep_path(dramarep.drama, dramarep) ,class:"btn btn-custom" %> 
+					<%= link_to "Delete", drama_dramarep_path(dramarep.drama, dramarep), method: :delete, data: { confirm: "Are you sure?" } ,class:"btn btn-custom" %>
+				</div>
+			<% elsif current_user.usertype == 779 %>
+				<div class="links btn-group">
+					<%= link_to "Delete", drama_dramarep_path(dramarep.drama, dramarep), method: :delete, data: { confirm: "Are you sure?" } ,class:"btn btn-custom" %>
+				</div>	
+			<% end %>
+		<% end %>		
+</div>	 

@@ -1,0 +1,8 @@
+
+<%= simple_form_for @book, :html => {:multipart => true } do |f| %>
+	<%= f.file_field :book_img %>
+	<%= f.input :title, label:"Book Title" %>
+	<%= f.input :publish_year, label:"Published Year" %> 
+	<%= f.input :author, label:"Author Name" %>
+	<%= f.button :submit, :class=> 'btn-custom2' %>
+<% end %>

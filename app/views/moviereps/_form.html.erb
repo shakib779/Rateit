@@ -1,0 +1,4 @@
+<%= simple_form_for([@movie, @movie.moviereps.build])  do |f| %>
+	<%= f.input :comment, label:"Comment" %>
+	<%= f.submit ( f.object.new_record? ? "Comment" : "Update"), :class => "btn-custom2" %>
+<% end %>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rateit</title>
+</head>
+<body id="page1">
+    <a name="top"></a>
+    <header>    
+        <div class="row-1">
+            <ul  class="sf-menu">
+                <li class="bgr"> <%= link_to "Rateit", root_path %></li>
+                <li class="bgr"> <%= link_to "Book", books_path %></li>
+                <li class="bgr"> <%= link_to "Movie", movies_path %></li>
+                <li class="bgr"> <%= link_to "Song", songs_path %></li>
+                <li class="bgr"> <%= link_to "Drama Series", dramas_path %></li>
+                <li class="bgr"> <%= link_to "About us", static_info_path %></li>
+                <% if user_signed_in? %>
+                    <li class="bgr"> <%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                    <li class="bgr"> <%= link_to current_user.user_name, edit_registration_path(current_user) %> </li>
+                    <% if current_user.usertype == 779 %>
+                        <li class="bgr"> <%= link_to "Admin", static_admin_path %></li>
+                    <% end %>
+                <% else %>
+                    <li class="bgr"> <%= link_to "Sign Up", new_user_registration_path %></li>
+                    <li class="bgr"> <%= link_to "Log In", new_user_session_path %> </li>
+                <% end %>   
+            </ul>
+        </div> 
+
+        <div class="row-2">
+            <% if user_signed_in? %>
+                <% if current_user.usertype == 779 %>
+                    <h2> You are an Admin </h2>
+                <% end %>
+            <% end %>
+        </div>
+    </header>
+    
+
+    <section id="content">   
+        <div class="wrapper">
+            <div style=" width:180px; float:left; margin-left:10px;">
+                <ul class="list-1">
+                    <div style="color:#8c8c8c; text-align:center; padding:6px; background-color: #ededed; font-size:14px;"> Order By </div>
+                    <li> <a href="#"> Uploaded Date</a> </li>
+                    <li> <a href="#"> Name</a> </li>
+                    <li> <a href="#"> Released Year </a> </li>
+                    <li> <a href="#"> Rating </a> </li>  
+                </ul>
+            </div>               
+
+            <div id="content_box"> 
+                <div style=" width:1100px; float:left; margin-left:10px;">
+                    <div class="bg-grey">
+                        <div class="padding-1">
+                            <div class="wrapper">
+                                <font color="Purple" size="4" > <center> Welcome to our website </center> </font>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size:14px;" class="box" width = "100%" hight = "1010">
+                        <h3>  Here you can review, rate, add and know the information about your desired movie, books, drama series and songs. <br> <br> Please Sign up to Rate and Review any movies, books, drama series and songs. <br> <br> Log in, if you already have an account. </h3> 
+
+                    </div>     
+                </div>
+            </div>                                                                                                                                       
+        </section>
+        
+        <hr>
+        
+        <footer>
+            <div>
+                <ul>
+                    <li style="margin-left: 800px"><a href="#top">Go to top</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </body>
+    </html>
+
+

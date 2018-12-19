@@ -1,0 +1,8 @@
+
+<%= simple_form_for @drama do |f| %>
+	<%= f.file_field :drama_img %>
+	<%= f.input :title, label:"Drama Series Title" %>
+	<%= f.input :star, label:"Stars" %> 
+	<%= f.input :con, label:"Country" %>
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>

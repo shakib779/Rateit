@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Password</title>
+</head>
+<body id="page1">
+  <a name="top"></a>
+  <header>    
+    <div class="row-1">
+      <ul  class="sf-menu">
+        <li class="bgr"> <%= link_to "Rateit", root_path %></li>
+        <li class="bgr"> <%= link_to "Book", books_path %></li>
+        <li class="bgr"> <%= link_to "Movie", movies_path %></li>
+        <li class="bgr"> <%= link_to "Song", songs_path %></li>
+        <li class="bgr"> <%= link_to "Drama Series", dramas_path %></li>
+        <li class="bgr"> <%= link_to "About us", static_info_path %></li>
+        <% if user_signed_in? %>
+        <li class="bgr"> <%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+        <li class="bgr"> <%= link_to current_user.user_name, edit_registration_path(current_user) %> </li>
+        <% else %>
+        <li class="bgr"> <%= link_to "Sign Up", new_user_registration_path %></li>
+        <li class="bgr"> <%= link_to "Log In", new_user_session_path %> </li>
+        <% end %>   
+      </ul>
+    </div> 
+
+    <div class="row-2">
+      <form name="search_form">
+        <% if user_signed_in? %>
+        <% if current_user.usertype == 779 %>
+        <h2> You are an Admin </h2>
+        <% end %>
+        <% end %>
+        <input id="search" name="search_files" onkeyup="limiter()" style="width:220px; float:right; font-size:15px; color:#b9b9b9;  padding:4px 9px 6px 9px; margin-right:10px; border:2px solid #eaeaea;" value="Search" onBlur="if(this.value=='') this.value='Search'" onFocus="if(this.value =='Search' ) this.value=''" />
+      </form>
+    </div>
+  </header>
+
+  <section id="content">   
+    <div class="wrapper">
+      <div style=" width:180px; float:left; margin-left:10px;">
+        <ul class="list-1">
+          <div>Order By</div>
+          <li> <a href="#"> Uploaded Date</a> </li>
+          <li> <a href="#"> Name</a> </li>
+          <li> <a href="#"> Released Year </a> </li>
+          <li> <a href="#"> Rating </a> </li>
+          
+        </ul>
+      </div>               
+
+      <div id="content_box"> 
+        <div style=" width:1100px; float:left; margin-left:10px;">
+          <div class="bg-grey">
+            <div class="padding-1">
+              <div class="wrapper">
+                <font color="Purple" size="4">Rate it ...... </font>
+              </div>
+            </div>
+          </div>
+          <div style="font-size:14px;" class="box" width = "100%" hight = "1010">
+            <h2>Change your password</h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <%= f.input :reset_password_token, as: :hidden %>
+            <%= f.full_error :reset_password_token %>
+
+            <div class="form-inputs">
+              <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Change my password" %>
+            </div>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+
+          </div>     
+        </div>
+      </div>                                                                                                                                       
+    </section>
+    
+    <hr>
+    
+    <footer>
+      <div>
+        <ul>
+          <li style="margin-left: 800px"><a href="#top">Go to top</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </body>
+  </html>
+
+
+
+

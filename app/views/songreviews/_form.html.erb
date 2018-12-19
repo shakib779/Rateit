@@ -1,0 +1,6 @@
+<%= simple_form_for([@song, @song.songreviews.build])  do |f| %>
+	
+	<%= f.input :rating, label:"Rating (Enter a value between 0 to 5)"%>
+	<%= f.input :comment %>
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>

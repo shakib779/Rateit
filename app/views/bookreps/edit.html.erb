@@ -1,0 +1,12 @@
+<head><title>Edit Comment</title></head>
+<div class="col-md-6 col-md-offset-3 new-book-form", style= "margin-top: 200px; background-color: #AFD275;">
+    <div class="edit-review-form">
+
+		 <h1> Edit Comment </h1>
+
+		<%= simple_form_for([@book,@bookrep]) do |f| %>
+			<%= f.input :comment, label:"Comment"%>
+			<%= f.submit ( f.object.new_record? ? "Comment" : "Update"), :class => "btn-custom2" %>
+		<% end %>
+	</div>
+</div>		

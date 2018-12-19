@@ -1,0 +1,8 @@
+
+<%= simple_form_for @song do |f| %>
+	<%= f.file_field :song_img %>
+	<%= f.input :title, label:"Song Title" %>
+	<%= f.input :release_year, label:"Released Year" %> 
+	<%= f.input :artist, label:"Artist" %>
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>

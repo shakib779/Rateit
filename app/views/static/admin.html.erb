@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<body id="page1">
+    <a name="top"></a>
+    <header>    
+        <div class="row-1">
+            <ul  class="sf-menu">
+                <li class="bgr"> <%= link_to "Rateit", root_path %></li>
+                <li class="bgr"> <%= link_to "Book", books_path %></li>
+                <li class="bgr"> <%= link_to "Movie", movies_path %></li>
+                <li class="bgr"> <%= link_to "Song", songs_path %></li>
+                <li class="bgr"> <%= link_to "Drama Series", dramas_path %></li>
+                <li class="bgr"> <%= link_to "About us", static_info_path %></li>
+                <% if user_signed_in? %>
+                <li class="bgr"> <%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                <li class="bgr"> <%= link_to current_user.user_name, edit_registration_path(current_user) %> </li>
+                <% if current_user.usertype == 779 %>
+                        <li class="bgr"> <%= link_to "Admin", static_admin_path %></li>
+                    <% end %>
+                <% else %>
+                <li class="bgr"> <%= link_to "Sign Up", new_user_registration_path %></li>
+                <li class="bgr"> <%= link_to "Log In", new_user_session_path %> </li>
+                <% end %>   
+            </ul>
+        </div> 
+
+        <div class="row-2">
+            <% if user_signed_in? %>
+                <% if current_user.usertype == 779 %>
+                    <h2> You are an Admin </h2>
+                <% end %>
+            <% end %>
+        </div>
+    </header>
+    
+
+    <section id="content">   
+        <div class="wrapper">
+            <div style=" width:180px; float:left; margin-left:10px;">
+                <ul class="list-1">
+                    <div style="color:#8c8c8c; text-align:center; padding:6px; background-color: #ededed; font-size:14px;"> Order By </div>
+                    <li> <a href="#"> Uploaded Date</a> </li>
+                    <li> <a href="#"> Name</a> </li>
+                    <li> <a href="#"> Released Year </a> </li>
+                    <li> <a href="#"> Rating </a> </li>  
+                </ul>
+            </div>               
+
+            <div id="content_box"> 
+                <div style=" width:1100px; float:left; margin-left:10px;">
+                    <div class="bg-grey">
+                        <div class="padding-1">
+                            <div class="wrapper">
+                                <font color="Purple" size="4" > <center> Welcome to our website </center> </font>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size:14px;" class="box" width = "100%" hight = "1010">
+                        <div class="row">
+                        <div class="row-2" style="width:300px; float:left; font-size:24px; color:#b9b9b9;  padding:4px 9px 6px 9px; margin-left:10px;">
+                            <%= form_tag(static_admin_path, :method => "get", id: "search-form") do %>
+                                <%= text_field_tag :search, params[:search], placeholder: "Enter user name", size: "20" %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <h3> To make any user admin, Enter the User Name of that user from the User list. </h3>
+                    <br>
+                    <br>
+                    <h2> Admin List </h2>
+                    <% @us.each do |us| %>
+                        <% if us.usertype == 779 %>
+                            <h4><%= us.user_name %></h4>
+                        <% end %>
+                    <% end %>
+                    <br>
+                    <br>
+                    <h2> User List </h2>
+                    <% @us.each do |us| %>
+                        <% if us.usertype != 779 %>
+                            <h4><%= us.user_name %></h4>
+                        <% end %>
+                        <% if us.user_name == params[:search] %>
+                            <% us.update_attribute(:usertype, "779") %>
+                        <% end %>
+                    <% end %>
+                    </div>     
+                </div>
+            </div>                                                                                                                                       
+        </section>
+        
+        <hr>
+        
+        <footer>
+            <div>
+                <ul>
+                    <li style="margin-left: 800px"><a href="#top">Go to top</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </body>
+    </html>
+
+

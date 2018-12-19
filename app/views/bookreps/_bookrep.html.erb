@@ -1,0 +1,22 @@
+
+<div class="review">
+	<p class="review-comment"> <%= bookrep.comment %></p>
+	<h4> commented by <% @us.each do |us| %>
+		<% if us.id == bookrep.user_id %>
+			<%= us.user_name %>
+		<% end %>
+	<% end %>
+	</h4>
+		<% if user_signed_in? %>
+			<% if bookrep.user_id == current_user.id  %>
+				<div class="links btn-group">
+					<%= link_to "Edit", edit_book_bookrep_path(bookrep.book, bookrep) ,class:"btn btn-custom" %> 
+					<%= link_to "Delete", book_bookrep_path(bookrep.book, bookrep), method: :delete, data: { confirm: "Are you sure?" } ,class:"btn btn-custom" %>
+				</div>
+			<% elsif current_user.usertype == 779 %>
+				<div class="links btn-group">
+					<%= link_to "Delete", book_bookrep_path(bookrep.book, bookrep), method: :delete, data: { confirm: "Are you sure?" } ,class:"btn btn-custom" %>
+				</div>	
+			<% end %>
+		<% end %>	
+</div>	 

@@ -1,0 +1,492 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500); 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Variables, mixins, etc.. */
+
+@mixin background-tile {
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 5px 4px #ccc;
+	padding: 1.5em 1.25em;
+}
+
+
+/* General styles */
+
+body {
+	background-color: #f5f5f5;
+	font-family: 'Lora', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 300;
+}
+
+p.alert, p.notice {
+	margin: 0;
+}
+
+
+/* Navbar/navigation styles */
+
+.navbar {
+	font-family: 'Ubuntu', sans-serif;
+	text-transform: uppercase;
+}
+.navbar-default {
+	background-color: #fff;
+	padding-bottom: 5px;
+	padding-top: 5px;
+
+	.navbar-nav > li > a {
+		color: #222;
+		&:hover {
+			color: darken(#f1c40f, 5%);
+			transition: 0.5s;
+		}
+	}
+
+	.navbar-header {
+
+		.navbar-brand {
+			color: #222;
+			letter-spacing: 1.4px;
+		}
+
+	}
+
+	.dropdown-menu > li > a:hover {
+		background-color: darken(#f1c40f, 5%);
+		color: #fff;
+	}
+
+	.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+		background-color: darken(#f1c40f, 5%);
+		color: #fff;	
+	}
+
+}
+
+.dropdown-menu > .active > a {
+	background-color: #f1c40f;
+	color: #fff;
+}
+
+
+/* Button/link styles */
+
+.btn-custom {
+	color: darken(Purple, 5%);
+	background-color: #ffffff;
+	border: 1px solid darken(Silver, 5%);
+	padding: 8px 20px;
+	border-radius: 5px;
+	font-family: 'Ubuntu', sans-serif;
+	&:hover {
+		text-decoration: none;
+		background-color: darken(Silver, 5%);
+		color: Purple;
+		transition: 0.5s;
+	}
+}
+
+.btn-custom2 {
+	color: Purple;
+	background-color:  silver;
+	border: 1px solid #222;
+	padding: 8px 20px;
+	border-radius: 5px;
+	font-family: 'Ubuntu', sans-serif;
+	&:hover {
+		text-decoration: none;
+		background-color: #333;
+		color: Purple;
+		transition: 0.5s;
+	}	
+}
+
+.links {
+
+	.btn-custom {
+		padding: 3px 10px;
+		font-weight: 300;
+	}
+
+}
+
+.book-links {
+
+	.btn-custom {
+		padding: 3px 10px;
+		font-weight: 300;
+		margin-top: 40px;	
+	}
+
+}
+
+/* Book styles */
+
+.book {
+	height: 350px;
+	width: 250px;
+	margin-bottom: 40px;
+	@include background-tile;
+}
+
+.book-show {
+	height: 475px;
+	width: 325px;
+	@include background-tile;
+}
+
+.book-info {
+	@include background-tile;
+
+	.book-title {
+		margin-top: 0;
+		font-size: 2em;
+	}
+
+	.avg-rating {
+		font-size: 1.5em;
+		margin-top: 15px;
+		margin-bottom: 5px;
+	}
+
+	.number-of-reviews {
+		font-size: 0.85em;
+		font-style: italic;
+	}
+
+	.book-author {
+		font-size: 1.5em;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		span {
+			font-size: 0.80em;
+		}	
+	}
+
+	.book-desc {
+		font-size: 1.05em;
+		line-height: 1.5;
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+
+}
+
+
+/* current-category styles */
+
+.current-category {
+	margin-bottom: 40px;
+}
+
+
+/* Reviews styles */
+
+.reviews {
+
+	@include background-tile;
+	margin-top: 40px;
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 2em;
+	}
+
+	.review {
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+
+		.review-comment {
+			font-size: 1.05em;
+			line-height: 1.5;
+		}
+
+	}
+
+	.new-review {
+		padding-top: 8px;
+	}
+
+}
+
+/* New Book Form styles */
+
+.new-book-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#category_id {
+		margin-bottom: 10px;
+	}
+
+	#book_book_img {
+		margin-bottom: 10px;
+	}
+
+}
+
+
+/* Edit Book Form styles */
+
+.edit-book-form {
+
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#book_category_id {
+		margin-bottom: 10px;
+	}
+
+	#book_book_img {
+		margin-bottom: 10px;
+	}
+
+}
+
+/* New/Edit review form styles */
+
+.new-review-form, .edit-review-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+	#rating-form {
+		margin-bottom: 15px;
+
+		label {
+			display: block;
+		}
+
+	}
+
+}
+
+
+/* Signup/Login form styles */
+
+.signup-form {
+	@include background-tile;
+
+	h2 {
+		margin-top: 0;
+	}
+
+}
+
+.login-form {
+	@include background-tile;
+
+	h2 {
+		margin-top: 0;
+	}
+
+}
+
+ body {
+ 	font-family:"Arial", cursive;
+ 	font-size:100%;
+ 	color:#8d8d8d;
+ 	min-width:1020px;
+ 	padding:0 0 30px 0;
+ 	background-attachment: fixed;
+ }
+
+ a {
+ 	color:#8c8c8c;
+ 	text-decoration:none;
+ }
+
+ a:hover{
+ 	text-decoration:underline;
+ }
+
+h1 {padding:15px 0 0 23px; position:relative; color:#282828;}
+h2 {font-size:20px; line-height:1.3em; letter-spacing:-1px; font-family:'Oswald', sans-serif; text-transform:uppercase; color:#282828; margin:0px 0 0px 0; font-weight:normal;}
+h4 {font-size:18px; line-height:22px; color:#18b4ed; margin:2 0 0 px 0; font-weight:normal;}
+h5 {font-size:12px; line-height:17px; margin:0px 0 1px 0px; color:#de112c; font-weight:normal;}
+h6 {font-size:12px; line-height:1.2em; margin:0px 0 0px; color:#282828;}
+
+ p {margin-bottom:20px;}
+
+ header {
+ 	width:100%;
+ 	position:relative;
+ 	z-index:2;
+ 	background:none;
+ 	padding:23px 0 0 0;
+ }
+
+ .wrapper {
+ 	overflow:hidden;
+ 	width:100%;
+ 	overflow:hidden;
+ 	position:relative;
+ }
+
+ .buttons a:hover {
+ 	cursor:pointer;
+ }
+
+ .sf-menu li a,
+ .list-1 li a,
+ .logo {text-decoration:none;}
+
+ .row-1 {width:100%; height:68px; position:relative; z-index:2; background:#2b2b2b;}
+ .row-2 {width:100%; height:50px; position:relative; z-index:1; background:#FFF; padding:20px 0 0 0;}
+
+ .logo {display:block; width:185px; height:38px;}
+
+ .sf-menu { padding:0px 0 0 0px; background:none; position:absolute; left:270px; top:0px;}
+ .sf-menu li.bgr {float:left; padding:0; background:url(../images/bg-menu-li.gif) left 0 no-repeat;}
+ .sf-menu li.bgr a {display:block; padding:24px 20px 24px 21px; color:#a0a0a0; font-family: 'Oswald', sans-serif; font-size:14px; line-height:1.3em; text-transform:uppercase; text-align:center; background: none;}
+ .sf-menu li.last a {padding:24px 20px 24px 20px;}
+ .sf-menu li.bgr:hover a, .sf-menu li.bgr.sfHover a, .sf-menu li.current a{color:#FFF;}
+
+ #content {width:100%; padding:0px 0px 0px 0px; z-index:1; position:relative; background:#FFF;}
+
+ .padding{padding: 0px 0px 20px 0px;}
+ .padding1{padding: 0px 0px 15px 4px;}
+ .padding-1 {padding:8px 0px 8px 9px;}
+ .padding-2 {padding:15px 0px 17px 19px;}
+ .padding-3 {padding:6px 0px 8px 9px;}
+ .padding-4 {padding:7px 0px 9px 9px;}
+ .padding-5 {padding:17px 0px 17px 20px;}
+ .padding-left {padding: 2px 0px 22px 10px;}
+
+ .bg-grey {background: #f6f6f6;
+ 	border:1px solid #eaeaea;
+ }
+
+ .text-1 {font-size:17px; line-height:17px; color:#fb1230;}
+
+ .text-indent {float:left; margin:3px 5px 0 0;}
+ .text-indent1 {float:left; margin:1px 10px 0 0;}
+
+ .list-1 li {font-size:12px; line-height:15px; background: url(../images/marker-3.png) left top no-repeat; background-color:#FFF; color:#a6a6a6; 
+ 	border-bottom:1px solid #eaeaea;
+ 	border-left:1px solid #eaeaea;
+ 	border-right:1px solid #eaeaea;
+ }
+ .list-1 li.last{border-bottom:1px solid #eaeaea;}
+ .list-1 li:hover {
+ 	background-position:left bottom;
+ 	background-color:#393;
+ }
+ .list-1 li.last:hover {border:1px solid #282828;}
+ .list-1 li a {color:#a6a6a6; display:block; padding:6px 0px 6px 30px;}
+ .list-1 li:hover a {color:#FFF;}
+
+ .box {
+ 	position:relative;
+ 	border-left:1px solid #eaeaea;
+ 	border-right:1px solid #eaeaea;
+ 	border-bottom:1px solid #eaeaea;
+ 	background:none;
+ }
+
+ .button {
+ 	cursor:pointer;
+ 	display:inline-block;
+ 	font-size:15px;
+ 	line-height:1.3em;
+ 	letter-spacing:-1px;
+ 	font-family: 'Oswald', sans-serif;
+ 	text-transform:uppercase;
+ 	color:#FFF;
+ 	padding:6px 11px 7px 12px;
+ 	text-align:center;
+ 	margin-top:4px;
+ 	margin-right:3px;
+ 	background: #eb122f;
+ 	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f01230), to(#c21125));
+ 	background: -moz-linear-gradient(#f01230, #c21125);
+ 	background: linear-gradient(#f01230, #c21125);
+ 	-pie-background: linear-gradient(#f01230, #c21125);
+ 	background-image: -o-linear-gradient(#f01230, #c21125);
+ }
+
+ .button:hover {background: #c21125;
+ 	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#c21125), to(#f01230));
+ 	background: -moz-linear-gradient(#c21125, #f01230);
+ 	background: linear-gradient(#c21125, #f01230);
+ 	-pie-background: linear-gradient(#c21125, #f01230);
+ 	background-image: -o-linear-gradient(#c21125, #f01230);
+ }
+
+ footer {width:100%; padding:32px 0px 34px 0px; background: #FFF; border-top:1px solid #e5e5e5; position:relative; z-index:2;}
+
+ .tabs {overflow:hidden; padding:0px 0 0 0px;}
+ .tabs li {background:#f6f6f6; border-top:1px solid #e8e8e8; border-right:1px solid #d4d4d4; border-left:none; position:relative; z-index:2; overflow:hidden; float:left;}
+ .tabs li.first {border-left:1px solid #d4d4d4;}
+ .tabs li:hover, .tabs li.active {background: #2e2e2e; border-top:1px solid #2e2e2e; border-right:1px solid #2e2e2e;}
+ .tabs li.first:hover, .tabs li.first.active {border-left:1px solid #2e2e2e;}
+ .tabs li a {display:block; font-size:20px; line-height:1.3em;  padding:7px 9px 9px 10px; color:#282828; text-transform:uppercase;  letter-spacing:-1px; font-family:'Oswald', sans-serif;  text-decoration:none; text-align:center;}
+ .tabs li a:hover, .tabs li.active a {
+ 	color:#FFF;
+ }
+
+ .tab_container { padding: 0px 0px 0px 0px; background:none; border-top:1px solid #eaeaea; position:relative; z-index:1;}
+
+ a, abbr, acronym, address, applet, article, aside, audio,
+ b, blockquote, big, body, center, canvas, caption, cite, code, command,
+ datalist, dd, del, details, dfn, dl, div, dt, 
+ em, embed,
+ fieldset, figcaption, figure, font, footer, form, header, hgroup, html,
+ i, iframe, img, ins,
+ kbd, 
+ keygen,
+ label, legend, li, 
+ meter,
+ nav,
+ object, ol, output,
+ p, pre, progress,
+ q, 
+ s, samp, section, small, span, source, strike, strong, sub, sup,
+ table, tbody, tfoot, thead, th, tr, tdvideo, tt,
+ u, ul, 
+ var{
+ 	background: transparent;
+ 	border: 0 none;
+ 	font-size: 100%;
+ 	margin: 0;
+ 	padding: 0;
+ 	border: 0;
+ 	outline: 0;
+ 	vertical-align: top; }
+
+ ul {
+ 	list-style: none;
+ }
